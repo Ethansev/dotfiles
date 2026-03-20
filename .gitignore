@@ -1,0 +1,12 @@
+# macOS
+.DS_Store
+
+# Compiled zsh files
+*.zwc
+
+# Sensitive files that might accidentally be added
+*.pem
+*.key
+*credentials*
+*secret*
+*.token
