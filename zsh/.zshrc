@@ -18,6 +18,8 @@ github() {
     fi
 }
 
+alias mux=tmuxinator
+
 plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
