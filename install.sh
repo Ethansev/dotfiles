@@ -75,6 +75,17 @@ echo "Linking Tmux config..."
 backup_if_exists "$HOME/.tmux.conf"
 ln -sf "$DOTFILES/tmux/.tmux.conf" "$HOME/.tmux.conf"
 
+# Install TPM if not present
+if [ ! -d "$HOME/.tmux/plugins/tpm" ]; then
+    echo "Installing Tmux Plugin Manager (TPM)..."
+    git clone https://github.com/tmux-plugins/tpm "$HOME/.tmux/plugins/tpm"
+fi
+
+# Install tmux plugins via TPM
+echo "Installing tmux plugins..."
+tmux start-server \; set-environment -g TMUX_PLUGIN_MANAGER_PATH "$HOME/.tmux/plugins" 2>/dev/null || true
+"$HOME/.tmux/plugins/tpm/bin/install_plugins"
+
 # Tmuxinator
 echo "Linking Tmuxinator configs..."
 mkdir -p "$HOME/.config"

@@ -28,6 +28,7 @@ cd ~/dotfiles && ./install.sh
 The install script will:
 - Install Oh-My-Zsh (if not present)
 - Install Powerlevel10k theme (if not present)
+- Install TPM (Tmux Plugin Manager) and tmux plugins (if not present)
 - Symlink all config files to their correct locations
 - Back up any existing configs to `~/.dotfiles-backup-<timestamp>/`
 
@@ -46,7 +47,10 @@ The install script will:
    - Set folder to `~/dotfiles/iterm2`
    - Check "Save changes automatically"
 
-4. **Neovim config** (separate repo):
+4. **Update tmux plugins** (when you change `.tmux.conf` plugins):
+   - Inside tmux, press `prefix + I` to install/update plugins
+
+5. **Neovim config** (separate repo):
    ```bash
    git clone https://github.com/Ethansev/nvim.git ~/.config/nvim
    ```
@@ -57,6 +61,7 @@ These are installed automatically by `install.sh` or should be installed manuall
 
 - [Oh-My-Zsh](https://ohmyz.sh/) - Zsh framework
 - [Powerlevel10k](https://github.com/romkatv/powerlevel10k) - Zsh theme
+- [TPM](https://github.com/tmux-plugins/tpm) - Tmux Plugin Manager (installed automatically)
 - [Tmux](https://github.com/tmux/tmux) - `brew install tmux`
 - [Tmuxinator](https://github.com/tmuxinator/tmuxinator) - `gem install tmuxinator`
 - [GitHub CLI](https://cli.github.com/) - `brew install gh`
