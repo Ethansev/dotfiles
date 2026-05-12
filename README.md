@@ -11,6 +11,7 @@ Personal dotfiles for macOS.
 | **Tmuxinator** | Tmux session layouts |
 | **Git** | Git configuration |
 | **Claude** | Claude Code CLI settings |
+| **Neovim** | LazyVim config (Harpoon, Catppuccin, tmux navigator) |
 | **iTerm2** | Placeholder for iTerm2 preferences sync |
 
 ## Installation
@@ -50,10 +51,7 @@ The install script will:
 4. **Update tmux plugins** (when you change `.tmux.conf` plugins):
    - Inside tmux, press `prefix + I` to install/update plugins
 
-5. **Neovim config** (separate repo):
-   ```bash
-   git clone https://github.com/Ethansev/nvim.git ~/.config/nvim
-   ```
+5. **Neovim** — launch `nvim`; lazy.nvim bootstraps on first run. Wait for `:Lazy sync` to finish.
 
 ## Dependencies
 
@@ -92,6 +90,10 @@ dotfiles/
 │   └── .gitconfig
 ├── claude/
 │   └── settings.json
+├── nvim/
+│   ├── init.lua
+│   ├── lazyvim.json
+│   └── lua/{config,plugins}/
 ├── iterm2/
 ├── install.sh
 └── README.md

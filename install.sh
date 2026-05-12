@@ -97,6 +97,12 @@ echo "Linking Git config..."
 backup_if_exists "$HOME/.gitconfig"
 ln -sf "$DOTFILES/git/.gitconfig" "$HOME/.gitconfig"
 
+# Neovim
+echo "Linking Neovim config..."
+mkdir -p "$HOME/.config"
+backup_if_exists "$HOME/.config/nvim"
+ln -sf "$DOTFILES/nvim" "$HOME/.config/nvim"
+
 # Claude
 echo "Linking Claude config..."
 mkdir -p "$HOME/.claude"
