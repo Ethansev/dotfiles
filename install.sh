@@ -97,6 +97,19 @@ echo "Linking Git config..."
 backup_if_exists "$HOME/.gitconfig"
 ln -sf "$DOTFILES/git/.gitconfig" "$HOME/.gitconfig"
 
+# Neovim binary + LazyVim runtime deps
+if ! command -v nvim >/dev/null 2>&1; then
+    echo "Installing Neovim and LazyVim dependencies..."
+    sudo apt-get update
+    sudo apt-get install -y neovim ripgrep fd-find build-essential unzip curl
+fi
+
+# LazyVim expects `fd`, but Ubuntu's package installs it as `fdfind`
+if command -v fdfind >/dev/null 2>&1 && ! command -v fd >/dev/null 2>&1; then
+    mkdir -p "$HOME/.local/bin"
+    ln -sf "$(command -v fdfind)" "$HOME/.local/bin/fd"
+fi
+
 # Neovim
 echo "Linking Neovim config..."
 mkdir -p "$HOME/.config"
