@@ -4,6 +4,15 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
 
+# /etc/zprofile (which runs path_helper to build the system PATH) only fires
+# for login shells. Non-login shells like tmux panes skip it and lose
+# /usr/local/bin, /usr/sbin, /sbin, etc. Re-invoke path_helper here so PATH is
+# correct everywhere. typeset -U keeps PATH free of duplicates.
+if [[ -x /usr/libexec/path_helper ]]; then
+  eval "$(/usr/libexec/path_helper -s)"
+fi
+typeset -U path PATH
+
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
 export ZSH="$HOME/.oh-my-zsh"
