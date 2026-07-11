@@ -1,8 +1,9 @@
+typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
+
 # Enable Powerlevel10k instant prompt.
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
-typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
 
 # /etc/zprofile (which runs path_helper to build the system PATH) only fires
 # for login shells. Non-login shells like tmux panes skip it and lose
@@ -16,6 +17,7 @@ typeset -U path PATH
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
 export ZSH="$HOME/.oh-my-zsh"
+ZSH_CUSTOM="$HOME/dotfiles/zsh/oh-my-zsh-custom"
 export EDITOR="nvim"
 
 # aliases
@@ -28,6 +30,7 @@ github() {
 }
 
 alias mux=tmuxinator
+alias connect-ubuntu='ssh ethansev@ethanubuntu'
 
 plugins=(git)
 
@@ -42,3 +45,20 @@ export PATH="$HOME/.local/bin:$PATH"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+. "$HOME/.cargo/env"
+
+# Stamp image(s) with iPhone 17 Pro Max screenshot-style EXIF, captured "now".
+# Usage: iphone-fixture [--out DIR] [--no-rename] FILE [FILE ...]
+iphone-fixture() {
+  ~/Code/make-iphone-fixture.sh \
+    --model "iPhone 17 Pro Max" \
+    --software "26.5" \
+    --date "$(date +'%Y:%m:%d %H:%M:%S')" \
+    --tz "$(date +%z | sed -E 's/(..)$/:\1/')" \
+    --no-rename \
+    "$@"
+}
+
+# API keys and other secrets live in secrets.zsh (gitignored via *secret*)
+[[ ! -f ~/dotfiles/zsh/secrets.zsh ]] || source ~/dotfiles/zsh/secrets.zsh
