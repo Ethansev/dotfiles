@@ -36,10 +36,19 @@
       "Bash(git mv *)",
       "Bash(git ls-files *)",
       "Bash(git pull *)",
-      "Bash(git fetch *)",
+      "Bash(git fetch:*)",
       "Bash(git stash *)",
-      "Bash(cd *)",
-      "Bash(docker compose *)",
+      "Bash(docker:*)",
+      "Bash(cat:*)",
+      "Bash(cd:*)",
+      "Bash(pwd)",
+      "Bash(which:*)",
+      "Bash(head:*)",
+      "Bash(file:*)",
+      "Bash(du:*)",
+      "Bash(df:*)",
+      "Bash(rg:*)",
+      "Bash(npx:*)",
       "Bash(curl *)",
       "Bash(gh *)",
       "Bash(railway status *)",
@@ -54,7 +63,7 @@
       "Bash(mkdir *)",
       "Bash(cp *)",
       "Bash(touch *)",
-      "Bash(ls *)",
+      "Bash(ls:*)",
       "Bash(find *)",
       "Bash(grep *)",
       "Bash(tail *)",
@@ -113,6 +122,7 @@
   "skipWorkflowUsageWarning": true,
   "autoCompactEnabled": true,
   "remoteControlAtStartup": true,
+  "inputNeededNotifEnabled": false,
   "agentPushNotifEnabled": true,
   "skipAutoPermissionPrompt": true,
   "feedbackSurveyState": {
@@ -122,6 +132,5 @@
     "Notification": "say \"Claude code needs your attention\"",
     "Stop": "say \"Main Claude code finished\"",
     "SubagentStop": "say \"Claude code subagent finished\""
-  },
-  "inputNeededNotifEnabled": false
+  }
 }
